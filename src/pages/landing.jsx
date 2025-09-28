@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Logo from "../assets/Logo-Wikipostres.svg?react";
+
 
 export default function Landing() {
     const [loginEmail, setLoginEmail] = useState("");
@@ -12,8 +14,11 @@ export default function Landing() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    //State for diferent password/confirm password
+    const [diferentPassword, setDiferentPassword] = useState("");
     const navigate = useNavigate();
 
+    //Login Box 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -32,10 +37,12 @@ export default function Landing() {
         }
     };
 
+    //Register Modal box
     const handleRegister = async (e) => {
       e.preventDefault();
       if(registerPassword !== confirmPassword) {
-        return alert("contraseñas no conciden");
+        setDiferentPassword("Las contraseñas no coinciden");
+        return
       }
       try {
         await axios.post("http://localhost:3000/auth/register", {
@@ -61,10 +68,16 @@ export default function Landing() {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
+      <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-1"></div>
+      <div className="absolute flex flex-col items-center top-48  z-20">
+      <Logo className=" text-white  w-[50%] h-auto"  />
+      <h2 className=" text-white font-[Lora] italic font-bold text-6xl">Caffe</h2>
+      </div>
+
       {/* Overlay login */}
       <div className="absolute inset-0 flex justify-end items-center z-10">
         <div className="bg-white/80 p-8 rounded-2xl shadow-lg w-96 mr-10">
-          <h2 className="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+          <h2 className="text-2xl mb-6 text-center font-[Josefin_Sans] font-thin ">Iniciar Sesión</h2>
 
           <form onSubmit={handleLogin}>
           <input
@@ -85,7 +98,7 @@ export default function Landing() {
 
           <button
             type="submit"
-            className="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-lg font-semibold"
+            className="w-full bg-[#e5ada8] hover:bg-[#d18f88] text-white font-[Josefin_Sans] py-2 rounded-lg font-semibold"
           >
             Entrar
           </button>
@@ -93,7 +106,7 @@ export default function Landing() {
 
           {/* Register Link */}
           <p className="mt-4 text-left text-sm">¿No tienes cuenta?{" "}
-          <button onClick={() => setShowRegister(true)} className="text-pink-600 font-semibold ">
+          <button onClick={() => setShowRegister(true)} className="text-[var(--color-brand-dark)] font-[Josefin_Sans] font-semibold ">
             Registrate
           </button>
           </p>
@@ -137,6 +150,9 @@ export default function Landing() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className="w-full p-2 mb-3 border rounded-lg" 
                 />
+                {diferentPassword && (
+                  <p className="text-red-600 text-sm mb-2">{diferentPassword}</p>
+                )}
                 <div className="flex justify-between">
                   <button 
                     type="button"   
@@ -148,7 +164,7 @@ export default function Landing() {
 
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-pink-500 text-white rounded-lg"
+                    className="px-4 py-2 bg-[var(--color-brand)] hover:bg-[var(--color-brand-dark)] text-white rounded-lg"
                   >
                     Registrarse
                   </button>

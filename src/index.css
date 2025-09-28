@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Resume
+1- Fonts
+2- Colors
+*/
+
+
+/*1- Fonts */
+
+/* Lora Variants */
+/*Normal*/
+@font-face {
+  font-family: "Lora";
+  src: url("/src/assets/fonts/Lora/Lora-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*Italic*/
+@font-face {
+  font-family: "Lora";
+  src: url("/src/assets/fonts/Lora/Lora-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/*Italic-Bold*/
+@font-face {
+  font-family: "Lora";
+  src: url("/src/assets/fonts/Lora/Lora-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+/* Josefin_Sans variants */
+/*Normal*/
+@font-face {
+  font-family: "Josefin_Sans";
+  src: url("/src/assets/fonts/Josefin_Sans/JosefinSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*Thin*/
+@font-face {
+  font-family: "Josefin_Sans";
+  src: url("/src/assets/fonts/Josefin_Sans/JosefinSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+/*semibold*/
+@font-face {
+  font-family: "Josefin_Sans";
+  src: url("/src/assets/fonts/Josefin_Sans/JosefinSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/*Bold*/
+@font-face {
+  font-family: "Josefin_Sans";
+  src: url("/src/assets/fonts/Josefin_Sans/JosefinSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* 2- Colors */
+
+:root {
+  --color-brand: #E5ADA8;        /*Primary Buttons*/
+  --color-brand-dark: #D18F88;   /*Primary Buttons hover*/
+  --color-chocolate: #725C3F;    /*Text color*/
+  --color-vanilla: #E5E0D8;      /* BG */
+  --color-caramel: #D0A77B;      /* Secundary Buttons*/
+  --color-lemon: #EFE8D8;        /*BG Cards*/
+  --color-mint: #D8D7B2;         /*Decorative*/
+  --color-mint-dark: #b5b490;    /*Hover/Accent*/
+}
