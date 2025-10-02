@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar"
 import ProductCard from "../components/ProductCard";
+import MiniCart from "../components/MiniCart";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -25,9 +26,8 @@ export default function Products() {
             </div>
             
             {/* Lateral Cart-list*/}
-            <div className="col-span-1 col-start-5 bg-[var(--color-vanilla)] p-4 rounded-xl shadow">
-                <h2>Carrito de compras</h2>
-                <p className="text-sm">Vacio por ahora</p>
+            <div className="min-h-20 max-h-screen col-span-1 col-start-5 bg-[var(--color-vanilla)] p-4 rounded-xl shadow">
+                <MiniCart />
             </div>
         </div>
         </>
