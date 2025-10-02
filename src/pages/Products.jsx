@@ -3,8 +3,10 @@ import axios from "axios";
 import NavBar from "../components/NavBar"
 import ProductCard from "../components/ProductCard";
 import MiniCart from "../components/MiniCart";
+import { useCart } from "../context/CartContext";
 
 export default function Products() {
+    const { cart } = useCart();
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -26,7 +28,7 @@ export default function Products() {
             </div>
             
             {/* Lateral Cart-list*/}
-            <div className="min-h-20 max-h-screen col-span-1 col-start-5 bg-[var(--color-vanilla)] p-4 rounded-xl shadow">
+            <div className={`${ cart.length === 0 ? "h-auto" : "max-h-screen" } col-span-1 col-start-5 bg-[var(--color-vanilla)] p-4 rounded-xl shadow transition-all self-start`}>
                 <MiniCart />
             </div>
         </div>
