@@ -10,7 +10,7 @@ export default function NavBar() {
             <div className="flex w-[35%] items-center justify-center">
             {/* Links */}
             <div className="w-full flex items-center justify-between gap-6 text-[var(--color-chocolate)] font-[Josefin-Sans] ">
-                <Link to="/desserts" className="hover:text-[var(--color-brand-dark)] hover:font-bold">Postres</Link>
+                <Link to="/products" className="hover:text-[var(--color-brand-dark)] hover:font-bold">Postres</Link>
                 <Link to="/hot-drinks"className="hover:text-[var(--color-brand-dark)] hover:font-bold">Bebidas calientes</Link>
                 <Link to="/cold-drinks" className="hover:text-[var(--color-brand-dark)] hover:font-bold ">Bebidas Frias</Link>
                 <Link to="/about" className="hover:text-[var(--color-brand-dark)] hover:font-bold">Nosotros</Link>
