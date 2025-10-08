@@ -8,7 +8,7 @@ export default function Landing() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [showRegister, setShowRegister] = useState(false);
-
+    const [error, setError] = useState("");
     //Register
     const [registerName, setRegisterName] = useState("");
     const [registerEmail, setRegisterEmail] = useState("");
@@ -22,18 +22,18 @@ export default function Landing() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:3000/auth/login", {
-                email,
-                password,
+            const res = await axios.post("http://localhost:3000/users/login", {
+                email: loginEmail,
+                password: loginPassword,
             });
 
             localStorage.setItem("token", res.data.token); //save token
+            localStorage.setItem("user", JSON.stringify(res.data.user));
             navigate("/products"); //redirect to products
 
 
         } catch(error) {
-            console.error("Error al iniciar secion:", error);
-            alert("Email o password invalido");
+            setError(error.response?.data?.message || "Error al iniciar sesion");
         }
     };
 
@@ -102,7 +102,9 @@ export default function Landing() {
           >
             Entrar
           </button>
+          <p className="text-red-500 text-sm mt-3">{error}</p>
           </form>
+
 
           {/* Register Link */}
           <p className="mt-4 text-left text-sm">¿No tienes cuenta?{" "}
