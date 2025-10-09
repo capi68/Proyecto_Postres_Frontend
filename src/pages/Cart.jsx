@@ -21,10 +21,19 @@ export default function Cart() {
 
       //Recover token from localStorage
       const token = localStorage.getItem("token");
+
+      //token verification
+      console.log("token actual:",token);
+
       // send order to back
       const response = await axios.post("http://localhost:3000/orders/checkout", {
         address,
         paymentMethod: payment,
+        items: cart.map((it) => ({
+          productId: it.id,
+          quantity: it.qty,
+          price: it.price,
+        })),
       },
       {
         headers: { Authorization: `Bearer ${token}`},
@@ -100,7 +109,7 @@ export default function Cart() {
             <label className="block mb-2 font-medium">Metodo de pago</label>
               <select 
                 type={payment}
-                onChange={(e) => setPayment(e.value.target)}
+                onChange={(e) => setPayment(e.target.value)}
                 className="w-full p-2 border rounded" 
               >
                 <option value="card">Tarjeta de Credito</option>

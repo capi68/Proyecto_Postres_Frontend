@@ -22,8 +22,8 @@ export default function MiniCart() {
 
             <div className="flex-1 overflow-y-auto">
                 {cart.map((it) => (
-                    <div className="flex justify-between">
-                    <div key={it.id} className="flex items-center pag-3 mb-3">
+                    <div key={it.id} className="flex justify-between">
+                    <div  className="flex items-center pag-3 mb-3">
                         <img src={it.image_mobile || it.image_desktop } alt={it.name} className="w-12 h-12 object-cover rounded"/>
                         <div className="flex-1">
                             <div className="text-sm font-semibold">{it.name}</div>
