@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import  { useCart } from "../context/CartContext";
 import { X } from "lucide-react";
 import NavBar from "../components/NavBar";
 
 export default function Cart() {
-  const { cart, removeFromCart, getTotalItems, getTotalPrice } = useCart();
+  const { cart, removeFromCart, getTotalItems, getTotalPrice, clearCart } = useCart();
 
   // checkout imputs
   const [address, setAddress] = useState("");
   const [payment, setPayment] = useState("card");
+
+  const navigate = useNavigate();
 
   const handleConfirm = async () => {
     if (!address) {
@@ -48,7 +51,16 @@ export default function Cart() {
     });
 
     //redirect
-    window.location.href = "/order";
+    navigate("/order", {
+      state: {
+        order: response.data.order,
+        orderItems: response.data.orderItems,
+      },
+
+    });
+
+    //Clear Cart
+    clearCart();
 
     } catch(error){
       console.error("Error al crear la orden:", error);
