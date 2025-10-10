@@ -73,12 +73,27 @@
 /* 2- Colors */
 
 :root {
-  --color-brand: #E5ADA8;        /*Primary Buttons*/
-  --color-brand-dark: #D18F88;   /*Primary Buttons hover*/
-  --color-chocolate: #725C3F;    /*Text color*/
-  --color-vanilla: #E5E0D8;      /* BG */
-  --color-caramel: #D0A77B;      /* Secundary Buttons*/
-  --color-lemon: #EFE8D8;        /*BG Cards*/
-  --color-mint: #D8D7B2;         /*Decorative*/
-  --color-mint-dark: #b5b490;    /*Hover/Accent*/
+  
+  /*  Colores principales */
+  --color-brand: #653B2B;           /* Van Dyke Brown - tono principal */
+  --color-brand-hover: #4e2f22;     /* Versión más oscura para hover */
+  --color-accent: #FF6C0E;          /* Pumpkin - botones, llamadas a la acción */
+  --color-accent-hover: #e85f0b;    /* Hover del acento */
+  
+  /*  Secundarios y cálidos */
+  --color-secondary: #898C32;       /* Old Moss Green - detalles, iconos */
+  --color-warm: #F4B223;            /* Orange-Yellow - fondos suaves, precios */
+  
+  /*  Neutros y fondos */
+  --color-bg: #FFF8F0;              /* Fondo principal - crema */
+  --color-surface: #FFFFFF;         /* Superficies (tarjetas, modales) */
+  --color-border: #EAE2D6;          /* Bordes sutiles */
+  --color-text: #3E2A1E;            /* Texto principal */
+  --color-text-light: #7B5B47;      /* Texto secundario */
+
+  /*  Estados */
+  --color-success: #8CBF40;         /* Verde éxito */
+  --color-error: #E85C41;           /* Error */
+  --color-disabled: #DCC7B9;        /* Desactivado o deshabilitado */
 }
+

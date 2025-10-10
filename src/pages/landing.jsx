@@ -22,9 +22,14 @@ export default function Landing() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
+
+          //normalization
+            const email = loginEmail.toLowerCase().trim();
+            const password = loginPassword; 
+
             const res = await axios.post("http://localhost:3000/users/login", {
-                email: loginEmail,
-                password: loginPassword,
+                email,
+                password,
             });
 
             localStorage.setItem("token", res.data.token); //save token
@@ -45,10 +50,15 @@ export default function Landing() {
         return
       }
       try {
-        await axios.post("http://localhost:3000/auth/register", {
-          name: registerName,
-          email: registerEmail,
-          password: registerPassword,
+
+        const email = registerEmail.toLowerCase().trim();
+        const name = registerName.toLowerCase().trim();
+        const password = registerPassword;
+
+        await axios.post("http://localhost:3000/users/register", {
+          name,
+          email,
+          password,
         });
         alert("Fuiste registrado con exito!! vamos por un postre..!!!");
         setShowRegister(false);
@@ -63,21 +73,21 @@ export default function Landing() {
     <div className="relative w-screen h-screen">
       {/* Imagen de fondo */}
       <img
-        src="/landing-image.jpg"
+        src="/images/landing_image.jpg"
         alt=""
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-[70%] h-full object-cover z-10"
       />
 
-      <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-1"></div>
-      <div className="absolute flex flex-col items-center top-48  z-20">
-      <Logo className=" text-white  w-[50%] h-auto"  />
-      <h2 className=" text-white font-[Lora] italic font-bold text-6xl">Caffe</h2>
+      <div className="absolute inset-0 w-[70%] bg-black/50 flex items-center justify-center z-1"></div>
+      <div className="absolute w-[30%] flex flex-col items-center top-8 right-0  z-20 text-[var(--color-brand)]">
+      <Logo className="   w-[40%] h-auto"  />
+      <h2 className="  font-[Lora] italic font-bold text-5xl">Caffe</h2>
       </div>
 
       {/* Overlay login */}
-      <div className="absolute inset-0 flex justify-end items-center z-10">
-        <div className="bg-white/80 p-8 rounded-2xl shadow-lg w-96 mr-10">
-          <h2 className="text-2xl mb-6 text-center font-[Josefin_Sans] font-thin ">Iniciar Sesión</h2>
+      <div className="absolute inset-0 bg-[var(--color-bg)] flex justify-end items-center z-0">
+        <div className=" p-8 rounded-2xl  w-96 mr-10">
+          <h2 className="text-2xl mb-6 text-center font-[Lora] font-thin text-[var(--color-brand)]">Iniciar Sesión</h2>
 
           <form onSubmit={handleLogin}>
           <input
@@ -85,7 +95,7 @@ export default function Landing() {
             placeholder="Correo"
             value={loginEmail}
             onChange={(e) => setLoginEmail(e.target.value)}
-            className="w-full p-2 mb-4 border rounded-lg"
+            className="w-full p-2 mb-4 border border-[var(--color-secondary)] rounded-lg"
           />
 
           <input
@@ -93,12 +103,12 @@ export default function Landing() {
             placeholder="Contraseña"
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
-            className="w-full p-2 mb-4 border rounded-lg"
+            className="w-full p-2 mb-4 border border-[var(--color-secondary)] rounded-lg"
           />
 
           <button
             type="submit"
-            className="w-full bg-[#e5ada8] hover:bg-[#d18f88] text-white font-[Josefin_Sans] py-2 rounded-lg font-semibold"
+            className="w-full bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-[Lora] py-2 rounded-lg font-semibold"
           >
             Entrar
           </button>
@@ -107,8 +117,8 @@ export default function Landing() {
 
 
           {/* Register Link */}
-          <p className="mt-4 text-left text-sm">¿No tienes cuenta?{" "}
-          <button onClick={() => setShowRegister(true)} className="text-[var(--color-brand-dark)] font-[Josefin_Sans] font-semibold ">
+          <p className="mt-4 text-left text-sm text-[var(--color-brand)]">¿No tienes cuenta?{" "}
+          <button onClick={() => setShowRegister(true)} className="text-[var(--color-secondary)] font-[Josefin_Sans] font-semibold ">
             Registrate
           </button>
           </p>
@@ -118,7 +128,7 @@ export default function Landing() {
         {showRegister && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20">
             <div className="bg-white p-6 rounded-2xl w-96 shadow-lg">
-              <h2 className="text-xl font-bold mb-4 text-center">Crear Cuenta</h2>
+              <h2 className="text-xl font-bold mb-4 text-center font-[lora] text-[var(--color-brand)]">Crear Cuenta</h2>
 
               <form onSubmit={handleRegister}>
                 <input 
@@ -126,7 +136,7 @@ export default function Landing() {
                   placeholder="Nombre"
                   value={registerName}
                   onChange={(e) => setRegisterName(e.target.value)}
-                  className="w-full p-2 mb-3 border rounded-lg" 
+                  className="w-full p-2 mb-3 border border-[var(--color-secondary)] rounded-lg" 
                 />
 
                 <input 
@@ -134,7 +144,7 @@ export default function Landing() {
                   placeholder="Correo"
                   value={registerEmail}
                   onChange={(e) => setRegisterEmail(e.target.value)}
-                  className="w-full p-2 mb-3 border rounded-lg"
+                  className="w-full p-2 mb-3 border border-[var(--color-secondary)] rounded-lg"
                 />
 
                 <input 
@@ -142,7 +152,7 @@ export default function Landing() {
                   placeholder="Contraseña" 
                   value={registerPassword}
                   onChange={(e) => setRegisterPassword(e.target.value)}
-                  className="w-full p-2 mb-3 border rounded-lg"
+                  className="w-full p-2 mb-3 border border-[var(--color-secondary)] rounded-lg"
                 />
 
                 <input 
@@ -150,7 +160,7 @@ export default function Landing() {
                   placeholder="Conrfirmar contraseña"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full p-2 mb-3 border rounded-lg" 
+                  className="w-full p-2 mb-3 border border-[var(--color-secondary)] rounded-lg" 
                 />
                 {diferentPassword && (
                   <p className="text-red-600 text-sm mb-2">{diferentPassword}</p>
@@ -159,14 +169,14 @@ export default function Landing() {
                   <button 
                     type="button"   
                     onClick={() => setShowRegister(false)}
-                    className="px-4 py-2 bg-gray-300 rounded-lg"
+                    className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg font-[Lora]"
                   >
                     Cancelar
                   </button>
 
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-[var(--color-brand)] hover:bg-[var(--color-brand-dark)] text-white rounded-lg"
+                    className="px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white rounded-lg font-[Lora]"
                   >
                     Registrarse
                   </button>
