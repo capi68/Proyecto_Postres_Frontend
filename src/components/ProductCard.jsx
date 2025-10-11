@@ -28,15 +28,16 @@ export default function ProductCard({ product }) {
                 <h3 className="
                         text-center 
                         text-2xl  
-                        font-[Josefin_Sans] 
+                        font-Lora
+                        font-bold 
                         text-[var(--color-text)]"
                 >
                 {product.name}
                 </h3>
              
                 <p className="
-                        font-[Josefin_Sans] 
-                        font-thin 
+                        font-Josefin 
+                        font-xs 
                         text-[var(--color-text)] 
                         text-xs
                         text-center"
@@ -44,7 +45,7 @@ export default function ProductCard({ product }) {
                     {product.description}
                 </p>
                 <p className="
-                        font-[Josefin_Sans] 
+                        font-Josefin 
                         font-semibold 
                         text-[var(--color-warm)]
                         text-xl"
@@ -58,8 +59,9 @@ export default function ProductCard({ product }) {
                         mb-2
                         py-2 
                         w-full 
+                        font-Josefin
                         bg-[var(--color-accent)] 
-                        hover:bg-[var(color-brand-dark)] 
+                        hover:bg-[var(--color-accent-hover)] 
                         text-white 
                         rounded-lg"
                 >

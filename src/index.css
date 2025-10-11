@@ -95,6 +95,16 @@
   --color-success: #8CBF40;         /* Verde éxito */
   --color-error: #E85C41;           /* Error */
   --color-disabled: #DCC7B9;        /* Desactivado o deshabilitado */
+
+  /*Fonts*/
+
+  .font-Josefin {
+    font-family: 'Josefin_Sans';
+  }
+
+  .font-Lora {
+    font-family: Lora ;
+  }
 }
 
 
