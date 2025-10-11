@@ -22,9 +22,9 @@ export default function Products() {
     return(
         <>
         <NavBar onSearch={setSearchTerm}/>
-        <div className="h-screen grid grid-cols-5  gap-6 p-6 bg-[var(--color-bg)]">
+        <div className="min-h-screen grid grid-cols-5  gap-6 p-6 bg-[var(--color-bg)]">
             {/* Grid Products */}
-            <div className="col-span-3 grid grid-cols-3 gap-4">
+            <div className="col-span-3 grid grid-cols-2 gap-4">
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((p) => (
                         <ProductCard key={p.id} product={p} />
