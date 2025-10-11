@@ -8,6 +8,7 @@ import { useCart } from "../context/CartContext";
 export default function Products() {
     const { cart } = useCart();
     const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         axios
@@ -16,15 +17,21 @@ export default function Products() {
         .catch((err) => console.error(err));
     }, []);
 
+    const filteredProducts = products.filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return(
         <>
-        <NavBar />
-        <div className="h-screen grid grid-cols-5  gap-6 p-6">
+        <NavBar onSearch={setSearchTerm}/>
+        <div className="h-screen grid grid-cols-5  gap-6 p-6 bg-[var(--color-bg)]">
             {/* Grid Products */}
             <div className="col-span-3 grid grid-cols-3 gap-4">
-                {products.map((p) => (
-                    <ProductCard key={p.id} product={p} />
-                ))}
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map((p) => (
+                        <ProductCard key={p.id} product={p} />
+                    ))
+                ) : ( 
+                    <p className="text-center text-gray-500 col-span-3">No se encontraron Porductos</p>
+                )}
             </div>
             
             {/* Lateral Cart-list*/}

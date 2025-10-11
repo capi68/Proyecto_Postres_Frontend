@@ -1,29 +1,67 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Search } from "lucide-react";
+import { useCart } from "../context/CartContext";
 import Logo from "../assets/Logo-Wikipostres.svg?react";
 
-export default function NavBar() {
-    return (
-        <nav className="flex flex-col items-center">
-            {/* Logo */}
-            <Logo className="w-36 h-28 " />
-            <div className="flex w-[35%] items-center justify-center">
-            {/* Links */}
-            <div className="w-full flex items-center justify-between gap-6 text-[var(--color-chocolate)] font-[Josefin-Sans] ">
-                <Link to="/products" className="hover:text-[var(--color-brand-dark)] hover:font-bold">Postres</Link>
-                <Link to="/hot-drinks"className="hover:text-[var(--color-brand-dark)] hover:font-bold">Bebidas calientes</Link>
-                <Link to="/cold-drinks" className="hover:text-[var(--color-brand-dark)] hover:font-bold ">Bebidas Frias</Link>
-                <Link to="/about" className="hover:text-[var(--color-brand-dark)] hover:font-bold">Nosotros</Link>
+export default function NavBar({ onSearch }) {
+    const  [search, setSearch] = useState("");
 
-                {/* Cart */}
-            <Link to="/Cart" className="relative">
-                <ShoppingCart className="w-6 h-6 text-[var(--color-chocolate)]" />
-                 {/* badge opcional */}
-                <span className="absolute -top-2 -right-2 bg-brand text-white text-xs px-2 py-0.5 rounded-full">
-                    3
-                </span>
-            </Link>
+    const { getTotalItems } = useCart();
+
+    //function search for products
+    const handleChange = (e) => {
+        const term = e.target.value;
+        setSearch(term);
+        onSearch?.(term);  //comunicate with father...
+    };
+
+    return (
+        <nav>
+            
+            <div className="
+                    w-full 
+                    flex 
+                    items-center 
+                    justify-center 
+                    gap-6 
+                    text-[var(--color-brand)] hover:text-[var(--color-brand-hover)] 
+                    font-[Lora] 
+                    bg-[var(--color-bg)]"
+            >
+            {/* Links */}
+            <div className="w-[20%] flex justify-between -mb-10 text-sm" >
+                <Link to="/inicio" className=" hover:font-semibold">Inicio</Link>
+                <Link to="/products" className=" hover:font-semibold">Catalogo</Link>
+                <Link to="/about" className=" hover:font-semibold">Nosotros</Link>
             </div>
+            {/* Logo */}
+            <Logo className="w-36 h-24 " />
+
+
+            <div className="w-1/4 flex items-end justify-evenly -mb-10">
+            {/* Search input */}
+
+            <div className="relative w-60">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-brand)] w-5 h-5" />
+                <input
+                type="text"
+                placeholder="Busca tu postre favorito"
+                value={search}
+                onChange={handleChange}
+                className="w-full p-0 pl-10 border border-[var(--color-secondary)] rounded-md text-sm text-[var(--color-brand)]"
+                />
+            </div>
+
+                    {/* Cart */}
+                    <Link to="/Cart" className="relative">
+                    <ShoppingCart className="w-6 h-6 " />
+                        {/* badge opcional */}
+                        <span className="absolute -top-2 -right-2  text-black text-xs px-2 py-0 rounded-full">
+                            {getTotalItems()}
+                        </span>
+                    </Link>
+                </div>
             </div>
         </nav>
     );
