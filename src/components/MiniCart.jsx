@@ -10,8 +10,17 @@ export default function MiniCart() {
     if(!cart.length) {
         return (
             <div className="p-4">
-                <h3 className="font-bold">Tu Carrito</h3>
-                <p className="text-sm text-gray-600">Vacio por ahora... </p>
+                <h3 className="
+                    font-Lora 
+                    font-semibold 
+                    text-lg 
+                    text-center 
+                    text-[var(--color-text)]
+                    mb-4
+            ">
+                No tienes productos aún
+            </h3>
+                
             </div>
         );
     }

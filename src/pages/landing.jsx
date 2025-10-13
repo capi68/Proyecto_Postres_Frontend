@@ -118,7 +118,7 @@ export default function Landing() {
 
           {/* Register Link */}
           <p className="mt-4 text-left text-sm text-[var(--color-brand)]">¿No tienes cuenta?{" "}
-          <button onClick={() => setShowRegister(true)} className="text-[var(--color-secondary)] font-[Josefin_Sans] font-semibold ">
+          <button onClick={() => setShowRegister(true)} className="text-[var(--color-secondary)] font-Josefin font-semibold ">
             Registrate
           </button>
           </p>
