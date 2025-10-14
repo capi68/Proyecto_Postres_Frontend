@@ -9,7 +9,7 @@ export default function CheckoutOrder() {
         <p className="text-lg">No hay orden por ahora, que esperas? vuelve por tu postre!</p>
       ) : (
         <div className="h-screen">
-          <div className=" flex flex-col items-center h-3/4 border">
+          <div className=" flex flex-col items-center h-3/4">
         <div 
           className="flex flex-col items-center gap-4 mb-6 w-1/2 h-3/4 overflow-y-scroll ">
           {cart.map((p) => (

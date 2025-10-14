@@ -5,6 +5,7 @@ import  { useCart } from "../context/CartContext";
 import NavBar from "../components/NavBar";
 import CheckoutOrder from "../components/checkoutOrder";
 
+
 export default function Cart() {
   const { cart, getTotalItems, getTotalPrice, clearCart } = useCart();
 
@@ -14,6 +15,7 @@ export default function Cart() {
   const [cardNumber, setCardNumber] = useState("");
   const [paypalEmail, setPaypalEmail] = useState("");
   const [paymentDetails, setPaymentDetails] = useState({ cardNumber: "", paypalEmail: "", });
+  const [cardType, setCardType] = useState ("");
   const [phone, setPhone] = useState("");
   const [deliveryMethod, setDeliveryMethod] = useState("delivery");
   const [wrongPhone, setWrongPhone] = useState("");
@@ -23,9 +25,11 @@ export default function Cart() {
   const handleConfirm = async () => {
     
 
-    if (!address) {
+    if (deliveryMethod === "delivery" && !address.trim()) {
       alert("Porfavor ingresa tu direccion para que puedas disfrutar tus postres!!");
       return;
+    } else if (deliveryMethod === "pickup") {
+      
     }
 
     if (!/^[3]\d{9}$/.test(phone)) {
@@ -90,6 +94,20 @@ export default function Cart() {
     
   };
 
+  const detectCardType = (number) => {
+    const re = {
+      visa: /^4/,
+      mastercard: /^5[1-5]/,
+      amex: /^3[47]/,
+      diners: /^3(?:0[0-5]|[68])/,
+    };
+    if (re.visa.test(number)) return "Visa";
+    if (re.mastercard.test(number)) return "Mastercard";
+    if (re.amex.test(number)) return "Amex";
+    if (re.diners.test(number)) return "Diners Club";
+    return "desconocida";
+  };
+
   return (
     <div className="min-h-screen  bg-[var(--color-vanilla)]">
       <NavBar />
@@ -100,7 +118,7 @@ export default function Cart() {
         <CheckoutOrder />
       </div>
       {/* Checkout Form */}
-      <div className="border  w-1/2 h-3/4 flex flex-col items-center justify-between bg-[var(--color-surface] p-6 mb-6">
+      <div className="w-1/2 h-3/4 flex flex-col items-center justify-between bg-[var(--color-surface] p-6 mb-6">
         <h2 className="text-3xl font-bold font-Lora text-[var(--color-text)] mb-4">Datos de envio</h2>
             
             <div className="w-1/2">
@@ -220,11 +238,18 @@ export default function Cart() {
                     <label className="block text-sm font-semibold mb-1">Número de Tarjeta</label>
                     <input 
                       type="text"
-                      placeholder="xxxx xxxx xxxxxxxx"
+                      placeholder="xxxx xxxx xxxx xxxx"
                       value={cardNumber}
-                      onChange={(e) => setCardNumber(e.target.value)}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, "") // delete spaces or letters
+                        setCardNumber(value);
+                        setCardType(detectCardType(value));
+                      }}
                       className="p-2 border rounded-md w-full" 
                     />
+                    {cardType && (
+                      <p className="text-sm text-[var(--color-success)] mt-1 mb-2">{cardType}</p>
+                    )}
                 </div>
               )}
 
@@ -237,7 +262,7 @@ export default function Cart() {
                         placeholder="correo"
                         value={paypalEmail}
                         onChange={(e) => setPaypalEmail(e.target.value)}
-                        className="p-2 border rounded-md w-full" 
+                        className="p-2 border rounded-md w-full mb-2" 
                     />
                 </div>
               )}
