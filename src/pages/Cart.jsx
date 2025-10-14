@@ -50,11 +50,7 @@ export default function Cart() {
         address,
         phone,
         deliveryMethod,
-        paymentDetails: payment === "card"
-          ? cardNumber
-          : payment === "paypal"
-          ? paypalEmail
-          : null,
+        paymentMethod: payment,
         items: cart.map((it) => ({
           productId: it.id,
           quantity: it.qty,
@@ -77,12 +73,11 @@ export default function Cart() {
 
     //redirect
     navigate("/order", {
-      state: {
-        order: response.data.order,
-        orderItems: response.data.orderItems,
-      },
-
-    });
+  state: { 
+    order: response.data.order,
+    orderItems: response.data.order.orderItems 
+  },
+});
 
     //Clear Cart
     clearCart();

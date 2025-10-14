@@ -26,31 +26,34 @@ export default function Order() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--color-vanilla)] flex flex-col items-center p-6">
-      <NavBar />
+    <div className="min-h-screen bg-[var(--color-bg)] flex flex-col  p-6">
+      <NavBar/>
 
       {/* Voucher */}
-      <div className="bg-white shadow-lg rounded-2xl w-full max-w-md mt-10 p-6 border border-dashed border-[var(--color-chocolate)]">
-        <h1 className="text-3xl font-bold text-center text-[var(--color-chocolate)] mb-4">
+      <div className="bg-white shadow-lg rounded-2xl w-full max-w-md mt-10 p-6 border border-dashed border-[var(--color-brand)] mx-auto">
+        <h1 className="text-3xl font-bold text-center text-[var(--color-text)] font-Lora mb-4">
           ¡Gracias por tu compra!
         </h1>
-        <p className="text-center text-gray-600 mb-6">
-          Tu pedido ha sido registrado con éxito. 🎉
+        <p className="text-center text-[var(--color-text-light)] font-Josefin mb-6">
+          Tu pedido ha sido registrado con éxito.!!
         </p>
 
         {/* Order Info */}
-        <div className="text-sm text-gray-700 mb-6">
-          <p><strong>ID de orden:</strong> {order.id}</p>
-          <p><strong>Dirección:</strong> {order.address}</p>
-          <p><strong>Método de pago:</strong> {order.paymentMethod}</p>
-          <p><strong>Estado:</strong> {order.status}</p>
-          <p><strong>Total:</strong> ${parseFloat(order.totalPrice).toFixed(2)}</p>
+        <div className="text-sm text-gray-700 mb-6 ">
+          <p className="text-[var(--color-text)]"><strong>ID de orden:</strong> {order.id}</p>
+          <p className="text-[var(--color-text)]"><strong>Cliente:</strong> {order.user?.name}</p>
+          <p className="text-[var(--color-text)]"><strong>Email:</strong> {order.user?.email}</p>
+          <p className="text-[var(--color-text)]"><strong>Telefono:</strong> {order.phone}</p>
+          <p className="text-[var(--color-text)]"><strong>Dirección:</strong> {order.deliveryMethod === "pickup" ? "Retiro en tienda" : order.address }</p>
+          <p className="text-[var(--color-text)]"><strong>Método de pago:</strong> {order.paymentMethod}</p>
+          <p className="text-[var(--color-text)]"><strong>Estado:</strong> {order.status}</p>
+          <p className="text-[var(--color-text)]"><strong>Total:</strong> ${parseFloat(order.totalPrice).toFixed(2)}</p>
         </div>
 
         <hr className="my-4 border-dashed border-gray-300" />
 
         {/* Order Items */}
-        <h2 className="text-lg font-semibold text-[var(--color-chocolate)] mb-3">
+        <h2 className="text-lg font-semibold text-[var(--color-text-light)] font-Lora mb-3">
           Detalles del pedido
         </h2>
         <div className="space-y-3">
@@ -59,8 +62,8 @@ export default function Order() {
               key={item.productId}
               className="flex justify-between items-center border-b border-gray-100 pb-2"
             >
-              <span className="text-gray-800">{item.product?.name || `Producto #${item.productId}`}</span>
-              <span className="text-gray-600 text-sm">
+              <span className="text-[var(--color-text-light)] font-Josefin">{item.product?.name || `Producto #${item.productId}`}</span>
+              <span className="text-[var(--color-warm)] text-sm font-Josefin">
                 {item.quantity} x ${parseFloat(item.price).toFixed(2)}
               </span>
             </div>
@@ -71,7 +74,14 @@ export default function Order() {
         <div className="mt-8 text-center">
           <button
             onClick={() => navigate("/")}
-            className="bg-[var(--color-brand)] hover:bg-[var(--color-brand-dark)] text-white px-6 py-3 rounded-lg font-semibold"
+            className="
+                bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] 
+                text-white 
+                font-Josefin
+                px-6 
+                py-3 
+                rounded-lg 
+                font-semibold"
           >
             Volver al inicio
           </button>
