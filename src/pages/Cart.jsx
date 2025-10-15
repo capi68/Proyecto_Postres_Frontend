@@ -19,7 +19,8 @@ export default function Cart() {
   const [phone, setPhone] = useState("");
   const [deliveryMethod, setDeliveryMethod] = useState("delivery");
   const [wrongPhone, setWrongPhone] = useState("");
-
+  const [putNumberCard, setPutNumberCard] = useState("");
+  const [putPaypalEmail, setPutPaypalEmail] = useState("");
   const navigate = useNavigate();
 
   const handleConfirm = async () => {
@@ -34,7 +35,19 @@ export default function Cart() {
 
     if (!/^[3]\d{9}$/.test(phone)) {
       setWrongPhone("El numero de telefono debe comenzar con 3 y tener 10 digitos");
-      return
+      return;
+    }
+
+    // put card
+    if (payment === "card" && cardNumber.trim() === "") {
+      setPutNumberCard("Introduce el numero de tu tarjeta");
+      return;
+    }
+
+    //put Paypal Email
+    if (payment === "paypal" && paypalEmail.trim() === "") {
+      setPutPaypalEmail("Introduce tu correo Paypal");
+      return;
     }
 
     try{
@@ -187,7 +200,11 @@ export default function Cart() {
                 {/*Card method*/}
                 <button
                     type="button"
-                    onClick={() => setPayment("card")}
+                    onClick={() => {
+                      setPayment("card");
+                      setPutNumberCard("");
+                      setPutPaypalEmail("");
+                    }}
                     className={`
                           flex-1 w-1/3 p-2 rounded-lg border font-Josefin text-xs 
                           ${ payment === "card" 
@@ -197,11 +214,15 @@ export default function Cart() {
                 >
                   Tarjeta de Credito
                 </button>
-
+                
                 {/*Paypal method*/}
                 <button
                     type="button"
-                    onClick={() => setPayment("paypal")}
+                    onClick={() => {
+                       setPayment("paypal");
+                       setPutNumberCard("");
+                       setPutPaypalEmail("");
+                      }}
                     className={`
                           flex-1 w-1/3 p-2 rounded-lg border font-Josefin text-xs 
                           ${ payment === "paypal" 
@@ -211,11 +232,16 @@ export default function Cart() {
                 >
                   Paypal
                 </button>
+                
 
                 {/*Efecty method*/}
                 <button
                     type="button"
-                    onClick={() => setPayment("efecty")}
+                    onClick={() =>{
+                      setPayment("efecty");
+                      setPutNumberCard("");
+                      setPutPaypalEmail("");
+                    }}
                     className={`
                           flex-1 w-1/3 p-2 rounded-lg border font-Josefin text-xs
                           ${ payment === "efecty" 
@@ -226,7 +252,7 @@ export default function Cart() {
                   Contra Entrega
                   </button>
               </div>
-
+                
               {/* card */}
               {payment === "card" && (
                 <div className="w-full">
@@ -262,6 +288,15 @@ export default function Cart() {
                 </div>
               )}
             </div>
+            
+            { putNumberCard && (
+                  <p className="text-red-600 text-sm mb-2">{putNumberCard}</p>
+                )}
+              
+              { putPaypalEmail && (
+                  <p className="text-red-600 text-sm mb-2">{putPaypalEmail}</p>
+                )}
+
 
               {/* Confirmation Button*/}
               <button 
