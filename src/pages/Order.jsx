@@ -16,7 +16,7 @@ export default function Order() {
           No hay ninguna orden reciente.
         </h1>
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
           className="bg-[var(--color-brand)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--color-brand-dark)]"
         >
           Volver al inicio
