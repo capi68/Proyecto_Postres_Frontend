@@ -33,7 +33,7 @@ export default function NavBar({ onSearch }) {
             <div className="w-[20%] flex justify-between -mb-10 text-sm" >
                 <Link to="/inicio" className=" hover:font-semibold">Inicio</Link>
                 <Link to="/products" className=" hover:font-semibold">Catalogo</Link>
-                <Link to="/about" className=" hover:font-semibold">Nosotros</Link>
+                <Link to="/nosotros" className=" hover:font-semibold">Nosotros</Link>
             </div>
             {/* Logo */}
             <Logo className="w-36 h-24 " />

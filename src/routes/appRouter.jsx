@@ -4,6 +4,7 @@ import Products from '../pages/Products'
 import Cart from '../pages/Cart'
 import Order from '../pages/Order'
 import Home from '../pages/Home'
+import Nosotros from '../pages/Nosotros'
 
 export default function AppRouter() {
   return (
@@ -14,6 +15,7 @@ export default function AppRouter() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/nosotros' element={<Nosotros />} />
       </Routes>
     </BrowserRouter>
   )

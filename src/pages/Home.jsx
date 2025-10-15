@@ -33,7 +33,7 @@ export default function Home () {
                 <p className=" text-[var(--color-text-light)] text-center text-lg font-Lora mb-8">
                     Disfruta donde gustes nuestro combo estrella <br /> con un solo click
                 </p>
-                <p className="text-[var(--color-text-light)] text-3xl font-bold font-Lora mb-8 text-center">
+                <p className="text-[var(--color-text)] text-3xl font-bold font-Lora mb-8 text-center">
                     Croissant bicolor de chocolate <br /> Y <br /> UN Macciato de la casa
                 </p>
                 </div>
@@ -43,7 +43,7 @@ export default function Home () {
 
             {/* images products carril */}
             <div className="w-full justify-center flex gap-6 mb-4">
-                <span className="flex justify-center items-center text-[var(--color-text)] font-Lora">y muchos mas...</span>
+                <span className="flex justify-center font-bold items-center text-[var(--color-text)] font-Lora">y muchos mas...</span>
                 <img src="/images/image-baklava-desktop.jpg" alt="" className="w-16 h-16 border rounded-lg " />
                 <img src="/images/image-brownie-desktop.jpg" alt="" className="w-16 h-16 border rounded-lg " />
                 <img src="/images/image-cake-desktop.jpg" alt="" className="w-16 h-16 border rounded-lg " />
