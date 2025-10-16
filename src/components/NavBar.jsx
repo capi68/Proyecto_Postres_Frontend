@@ -21,28 +21,40 @@ export default function NavBar({ onSearch }) {
             
             <div className="
                     w-full 
-                    flex 
+                    flex  flex-col md:flex-row 
+                    h-24 md:h-auto
                     items-center 
-                    justify-center 
+                    justify-between md:justify-center 
                     gap-6 
                     text-[var(--color-brand)] hover:text-[var(--color-brand-hover)] 
                     font-[Lora] 
                     bg-[var(--color-bg)]"
             >
             {/* Links */}
-            <div className="w-[20%] flex justify-between -mb-10 text-sm" >
+            <div className="
+                    w-[70%] md:w-[30%] lg:w-[20%] 
+                    mt-4 md:mt-0
+                    flex justify-between 
+                    -mb-10 
+                    text-sm 2xl:text-lg" 
+            >
                 <Link to="/home" className=" hover:font-semibold">Inicio</Link>
                 <Link to="/products" className=" hover:font-semibold">Catalogo</Link>
                 <Link to="/nosotros" className=" hover:font-semibold">Nosotros</Link>
             </div>
             {/* Logo */}
-            <Logo className="w-36 h-24 " />
+            <Logo className="hidden md:block w-36 h-24 " />
 
 
-            <div className="w-1/4 flex items-end justify-evenly -mb-10">
+            <div className="
+                    w-[70%] md:w-[30%] lg:w-1/4 
+                    flex items-end 
+                    justify-evenly 
+                    mb-0 md:-mb-10"
+            >
             {/* Search input */}
 
-            <div className="relative w-60">
+            <div className="relative w-60 2xl:w-80">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-brand)] w-5 h-5" />
                 <input
                 type="text"
