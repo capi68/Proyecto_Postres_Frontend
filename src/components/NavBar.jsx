@@ -50,7 +50,7 @@ export default function NavBar({ onSearch }) {
                     w-[70%] md:w-[30%] lg:w-1/4 
                     flex items-end 
                     justify-evenly 
-                    mb-0 md:-mb-10"
+                    mb-2 md:-mb-10"
             >
             {/* Search input */}
 

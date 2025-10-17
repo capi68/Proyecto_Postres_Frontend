@@ -23,17 +23,33 @@ export default function Products() {
         <>
         <NavBar onSearch={setSearchTerm}/>
         <h1 className="
-        px-6
-        py-12
-        text-4xl
-        font-Lora 
-        font-bold
-        text-[var(--color-text)]
-        bg-[var(--color-bg)]">Nuestros Productos</h1>
-        <div className="min-h-screen grid grid-cols-5 pt-18 gap-6 p-6 bg-[var(--color-bg)]">
+                px-6 
+                text-center md:text-start
+                py-6 md:py-12
+                text-2xl md:text-4xl
+                font-Lora 
+                font-bold
+                text-[var(--color-text)]
+                bg-[var(--color-bg)]"
+        >
+            Nuestros Productos
+        </h1>
+
+        <div className="
+                min-h-screen 
+                grid grid-cols-4 md:grid-cols-5 
+                pt-18 
+                gap-6 
+                p-6 
+                bg-[var(--color-bg)]"
+        >
             
             {/* Grid Products */}
-            <div className="col-span-3 grid grid-cols-2 gap-4">
+            <div className="
+                        col-span-2 md:col-span-3 
+                        grid grid-cols-1 md:grid-cols-2 
+                        gap-4"
+            >
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((p) => (
                         <ProductCard key={p.id} product={p} />
@@ -44,7 +60,7 @@ export default function Products() {
             </div>
             
             {/* Lateral Cart-list*/}
-            <div className={`${ cart.length === 0 ? "h-auto" : "max-h-screen" } col-span-1 col-start-5 bg-[var(--color-surface)] p-4 rounded-xl shadow transition-all self-start`}>
+            <div className={`${ cart.length === 0 ? "h-auto" : "max-h-screen" } col-span-2 md:col-span-1 col-start-3 md:col-start-5 bg-[var(--color-surface)] p-4 rounded-xl shadow transition-all self-start`}>
                 <MiniCart />
             </div>
         </div>
