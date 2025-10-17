@@ -33,7 +33,7 @@ export default function NavBar({ onSearch }) {
             {/* Links */}
             <div className="
                     w-[70%] md:w-[30%] lg:w-[20%] 
-                    mt-4 md:mt-0
+                    mt-4 md:mt-0 
                     flex justify-between 
                     -mb-10 
                     text-sm 2xl:text-lg" 
