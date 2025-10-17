@@ -119,17 +119,46 @@ export default function Cart() {
   return (
     <div className="min-h-screen  bg-[var(--color-vanilla)]">
       <NavBar />
-      <h1 className="text-3xl font-bold mb-6 text-[var(--color-text)] font-Lora">Confirmando tu compra!</h1>
-      <div className="flex">
+      <h1 className="
+              text-2xl md:text-4xl 2xl:text-6xl 
+              font-bold 
+              md:ml-2
+              mt-6
+              mb-6 
+              text-center md:text-left
+              text-[var(--color-text)] 
+              font-Lora"
+      >
+        Confirmando tu compra!
+      </h1>
+      <div className="flex flex-col md:flex-row pt-2">
       {/* Product List*/}
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2 h-[70dvh] lg:h-screen">
         <CheckoutOrder />
       </div>
+
       {/* Checkout Form */}
-      <div className="w-1/2 h-3/4 flex flex-col items-center justify-between bg-[var(--color-surface] p-6 mb-6">
-        <h2 className="text-3xl font-bold font-Lora text-[var(--color-text)] mb-4">Datos de envio</h2>
+      <div className="
+                w-full md:w-1/2 
+                h-3/4 2xl:h-full
+                flex flex-col 
+                items-center 
+                justify-between 
+                bg-[var(--color-surface] 
+                p-6 
+                mb-6"
+      >
+        <h2 className="
+                text-2xl md:text-4xl 2xl:text-6xl 
+                font-bold 
+                font-Lora 
+                text-[var(--color-text)] 
+                mb-4"
+        >
+          Datos de envio
+        </h2>
             
-            <div className="w-1/2">
+            <div className="w-full xl:w-1/2">
             {/*Delivey Method*/}
 
             <div className="flex flex-col">
@@ -196,7 +225,7 @@ export default function Cart() {
             <div>
               <label className="block mb-2 font-medium font-Lora">Metodo de pago</label>
               
-              <div className="flex border mb-8 ">
+              <div className="flex mb-8 ">
                 {/*Card method*/}
                 <button
                     type="button"
@@ -266,7 +295,7 @@ export default function Cart() {
                         setCardNumber(value);
                         setCardType(detectCardType(value));
                       }}
-                      className="p-2 border rounded-md w-full" 
+                      className="p-2 border rounded-md w-full mb-2" 
                     />
                     {cardType && (
                       <p className="text-sm text-[var(--color-success)] mt-1 mb-2">{cardType}</p>
