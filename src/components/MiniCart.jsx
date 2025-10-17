@@ -9,6 +9,7 @@ export default function MiniCart() {
 
     if(!cart.length) {
         return (
+
             <div className="p-4">
                 <h3 className="
                     font-Lora 
@@ -26,11 +27,11 @@ export default function MiniCart() {
     }
 
     return (
-        <div className="p-2 h-full flex flex-col bg-[var(--color-surface)]">
+        <div className="p-0 md:p-2 h-full flex flex-col bg-[var(--color-surface)]">
             <h3 className="
                     font-Lora 
                     font-semibold 
-                    text-lg 
+                    text-sm md:text-lg 
                     text-center 
                     text-[var(--color-text)]
                     mb-4
@@ -41,16 +42,18 @@ export default function MiniCart() {
             <div className="flex-1 overflow-y-auto">
                 {cart.map((it) => (
                 <div key={it.id} className="flex justify-between">
-                    <div  className="w-full flex items-center pag-3 mb-3">
+                    <div  className="w-full flex items-center  mb-3">
+
+                        {/* Product Tumbnail*/}
                         <img 
                             src={it.image_mobile || it.image_desktop } 
                             alt={it.name} 
-                            className="w-12 h-12 object-cover rounded"
+                            className="hidden md:block w-12 h-12 object-cover rounded"
                         />
-
+                        {/*Product Name*/}
                         <div className="ml-2 flex-1">
                             <div className="
-                                    text-sm 
+                                    text-xs md:text-sm 
                                     font-Lora 
                                     text-[var(--color-text)] 
                                     font-semibold"

@@ -9,7 +9,7 @@ export default function ProductCard({ product }) {
                     relative
                     bg-[var(--color-surface)] 
                     p-2 
-                    h-40 md:h-60
+                    h-40 md:h-60 lg:h-64 xl:h-60
                     rounded-xl 
                     shadow hover:shadow-lg 
                     flex  
@@ -17,14 +17,14 @@ export default function ProductCard({ product }) {
                     overflow-hidden"
          >
 
-                {/* dessert image*/}
+                {/* Product image*/}
                 <img 
                     src={product.image_desktop} 
                     alt={product.name} 
                     className="absolute 
                                rounded-lg  
                                h-16 md:h-28 lg:h-36 xl:h-60 
-                               left-0 lg:-left-1 xl:-left-20 2xl:left-0
+                               left-0 md:-left-4 lg:-left-1 xl:-left-20 2xl:left-0
                                top-0" 
                 />
                 
