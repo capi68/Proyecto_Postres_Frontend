@@ -84,7 +84,7 @@ export default function ProductCard({ product }) {
                         bg-[var(--color-accent)] 
                         hover:bg-[var(--color-accent-hover)] 
                         text-white 
-                        2xl:text-xl
+                        text-xs md:text-md lg:text-lg 2xl:text-xl
                         rounded-lg"
                 >
                     Agregar al carrito

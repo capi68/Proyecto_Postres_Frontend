@@ -73,7 +73,7 @@ export default function Order() {
         {/* Footer */}
         <div className="mt-8 text-center">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/home")}
             className="
                 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] 
                 text-white 
