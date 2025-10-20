@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, Search } from "lucide-react";
+import { ShoppingCart, Search, CirclePower } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import Logo from "../assets/Logo-Wikipostres.svg?react";
 
 export default function NavBar({ onSearch }) {
     const  [search, setSearch] = useState("");
 
-    const { getTotalItems } = useCart();
+    const { getTotalItems, clearCart } = useCart();
 
     //function search for products
     const handleChange = (e) => {
@@ -15,6 +15,15 @@ export default function NavBar({ onSearch }) {
         setSearch(term);
         onSearch?.(term);  //comunicate with father...
     };
+
+    //Log Out
+    const handleLogout = () => {
+        localStorage.removeItem("token");  //remove token
+
+        clearCart(); //Clean Cart
+
+
+    }
 
     return (
         <nav>
@@ -46,22 +55,29 @@ export default function NavBar({ onSearch }) {
             <Logo className="hidden md:block w-36 h-24 " />
 
 
-            <div className="
-                    w-[70%] md:w-[30%] lg:w-1/4 
+            <div className=" border 
+                    w-[80%] md:w-[30%] lg:w-1/4 
                     flex items-end 
-                    justify-evenly 
+                    justify-between 
                     mb-2 md:-mb-10"
             >
             {/* Search input */}
 
-            <div className="relative w-60 2xl:w-80">
+            <div className="relative w-60 2xl:w-60">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-brand)] w-5 h-5" />
                 <input
                 type="text"
                 placeholder="Busca tu postre favorito"
                 value={search}
                 onChange={handleChange}
-                className="w-full p-0 pl-10 border border-[var(--color-secondary)] rounded-md text-sm text-[var(--color-brand)]"
+                className="
+                        w-full 
+                        p-0 
+                        pl-10 
+                        border border-[var(--color-secondary)] 
+                        rounded-md 
+                        text-sm 
+                        text-[var(--color-brand)]"
                 />
             </div>
 
@@ -72,6 +88,11 @@ export default function NavBar({ onSearch }) {
                         <span className="absolute -top-2 -right-2  text-black text-xs px-2 py-0 rounded-full">
                             {getTotalItems()}
                         </span>
+                    </Link>
+                    {/* Log out*/}
+                    <Link to="/" className="relative flex w-20" onClick={handleLogout}>
+                    <CirclePower className="w-6 md:w-10 md:h-8 h-6 mx-auto border " aria-label="Cerrar-sesión"/>
+                    <span className="hidden md:block text-xs text-center">Cerrar Sesión</span>
                     </Link>
                 </div>
             </div>
