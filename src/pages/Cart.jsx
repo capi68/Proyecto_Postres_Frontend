@@ -117,7 +117,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="min-h-screen  bg-[var(--color-vanilla)]">
+    <div className="min-h-screen  bg-[var(--color-surface)]">
       <NavBar />
       <h1 className="
               text-2xl md:text-4xl 2xl:text-6xl 
@@ -144,7 +144,7 @@ export default function Cart() {
                 flex flex-col 
                 items-center 
                 justify-between 
-                bg-[var(--color-surface] 
+                bg-[var(--color-surface)] 
                 p-6 
                 mb-6"
       >

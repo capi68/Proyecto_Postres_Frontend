@@ -212,7 +212,16 @@ export default function Landing() {
                   z-40"
           >
           <div className="bg-white p-6 rounded-2xl w-96 shadow-lg">
-            <h2 className="text-xl font-bold mb-4 text-center font-[lora] text-[var(--color-brand)]">Crear Cuenta</h2>
+            <h2 className="
+                  text-xl 
+                  font-bold 
+                  mb-4 
+                  text-center 
+                  font-lora 
+                  text-[var(--color-brand)]"
+            >
+              Crear Cuenta
+            </h2>
 
             <form onSubmit={handleRegister}>
               <input 
@@ -260,7 +269,7 @@ export default function Landing() {
 
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white rounded-lg font-[Lora]"
+                  className="px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white rounded-lg font-Lora"
                 >
                   Registrarse
                 </button>

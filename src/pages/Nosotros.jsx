@@ -7,15 +7,43 @@ export default function Nosotros() {
     const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[var(--color-vanilla)] flex flex-col">
+    <div className="
+              min-h-screen 
+              bg-[var(--color-bg)] 
+              flex flex-col"
+    >
       <NavBar />
 
-      <main className="flex-grow flex flex-col items-center justify-center px-8 py-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold font-Lora text-[var(--color-text)] mb-6">
+      <main className="
+              flex-grow 
+              flex flex-col 
+              items-center 
+              justify-center 
+              px-8 
+              py-12 
+              text-center"
+      >
+        <h1 className="
+              text-4xl md:text-5xl 
+              font-bold 
+              font-Lora 
+              text-[var(--color-text)] 
+              mb-6"
+        >
           Nuestra Historia 
         </h1>
 
-        <div className="max-w-3xl text-[var(--color-text)] text-lg leading-relaxed font-Josefin bg-white/70 p-8 rounded-2xl shadow-md">
+        <div className="
+              max-w-3xl 
+              text-[var(--color-text)] 
+              text-lg 
+              leading-relaxed 
+              font-Josefin 
+              bg-white/70 
+              p-8 
+              rounded-2xl 
+              shadow-md"
+        >
           <p className="mb-6">
             En <span className="font-semibold text-[var(--color-accent)]">Wikipostres</span> creemos que los mejores
             momentos de la vida se disfrutan con un buen postre. Nuestra historia
@@ -48,10 +76,6 @@ export default function Nosotros() {
         </div>
       </main>
 
-      <footer className="bg-[var(--color-chocolate)] text-white py-6 text-center mt-8">
-        <p>© {new Date().getFullYear()} Wikipostres | Todos los derechos reservados</p>
-        <p className="text-sm mt-1">Bogotá, Colombia 🇨🇴</p>
-      </footer>
     </div>
   );
 }

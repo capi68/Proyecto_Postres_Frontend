@@ -55,7 +55,7 @@ export default function NavBar({ onSearch }) {
             <Logo className="hidden md:block w-36 h-24 " />
 
 
-            <div className=" border 
+            <div className="
                     w-[80%] md:w-[30%] lg:w-1/4 
                     flex items-end 
                     justify-between 
@@ -91,7 +91,7 @@ export default function NavBar({ onSearch }) {
                     </Link>
                     {/* Log out*/}
                     <Link to="/" className="relative flex w-20" onClick={handleLogout}>
-                    <CirclePower className="w-6 md:w-10 md:h-8 h-6 mx-auto border " aria-label="Cerrar-sesión"/>
+                    <CirclePower className="w-6 md:w-10 md:h-8 h-6 mx-auto" aria-label="Cerrar-sesión"/>
                     <span className="hidden md:block text-xs text-center">Cerrar Sesión</span>
                     </Link>
                 </div>

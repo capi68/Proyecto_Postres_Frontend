@@ -11,13 +11,31 @@ export default function Order() {
   // Si por algún motivo no llega la orden (refresh, acceso directo)
   if (!order || !orderItems) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-vanilla)]">
-        <h1 className="text-2xl font-semibold text-[var(--color-chocolate)] mb-4">
+      <div className="
+              min-h-screen 
+              flex flex-col 
+              items-center 
+              justify-center 
+              bg-[var(--color-bg)]"
+      >
+        <h1 className="
+                text-2xl 
+                font-semibold 
+                text-[var(--color-brand)] 
+                mb-4"
+        >
           No hay ninguna orden reciente.
         </h1>
+
         <button
           onClick={() => navigate("/home")}
-          className="bg-[var(--color-brand)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--color-brand-dark)]"
+          className="
+              bg-[var(--color-brand)] hover:bg-[var(--color-brand-dark)]
+              text-white 
+              px-6 
+              py-3 
+              rounded-lg 
+              font-semibold"
         >
           Volver al inicio
         </button>
@@ -30,16 +48,38 @@ export default function Order() {
       <NavBar/>
 
       {/* Voucher */}
-      <div className="bg-white shadow-lg rounded-2xl w-full max-w-md mt-10 p-6 border border-dashed border-[var(--color-brand)] mx-auto">
-        <h1 className="text-3xl font-bold text-center text-[var(--color-text)] font-Lora mb-4">
+      <div className="
+          bg-white 
+          shadow-lg 
+          rounded-2xl 
+          w-full max-w-md 
+          mt-10 
+          p-6 
+          border border-dashed 
+          border-[var(--color-brand)] 
+          mx-auto"
+      >
+        <h1 className="
+                text-3xl 
+                font-bold 
+                text-center 
+                text-[var(--color-text)] 
+                font-Lora 
+                mb-4"
+        >
           ¡Gracias por tu compra!
         </h1>
-        <p className="text-center text-[var(--color-text-light)] font-Josefin mb-6">
+        <p className="
+                text-center 
+                text-[var(--color-text-light)] 
+                font-Josefin 
+                mb-6"
+        >
           Tu pedido ha sido registrado con éxito.!!
         </p>
 
         {/* Order Info */}
-        <div className="text-sm text-gray-700 mb-6 ">
+        <div className="text-sm mb-6 ">
           <p className="text-[var(--color-text)]"><strong>ID de orden:</strong> {order.id}</p>
           <p className="text-[var(--color-text)]"><strong>Cliente:</strong> {order.user?.name}</p>
           <p className="text-[var(--color-text)]"><strong>Email:</strong> {order.user?.email}</p>
@@ -53,7 +93,13 @@ export default function Order() {
         <hr className="my-4 border-dashed border-gray-300" />
 
         {/* Order Items */}
-        <h2 className="text-lg font-semibold text-[var(--color-text-light)] font-Lora mb-3">
+        <h2 className="
+                text-lg 
+                font-semibold 
+                text-[var(--color-text-light)] 
+                font-Lora 
+                mb-3"
+        >
           Detalles del pedido
         </h2>
         <div className="space-y-3">
