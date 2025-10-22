@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import Logo from "../assets/Logo-Wikipostres.svg?react";
 
 
@@ -27,7 +27,7 @@ export default function Landing() {
             const email = loginEmail.toLowerCase().trim();
             const password = loginPassword; 
 
-            const res = await axios.post("http://localhost:3000/users/login", {
+            const res = await api.post("/users/login", {
                 email,
                 password,
             });
@@ -55,7 +55,7 @@ export default function Landing() {
         const name = registerName.toLowerCase().trim();
         const password = registerPassword;
 
-        await axios.post("http://localhost:3000/users/register", {
+        await api.post("/users/register", {
           name,
           email,
           password,

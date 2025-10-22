@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import NavBar from "../components/NavBar"
 import ProductCard from "../components/ProductCard";
 import MiniCart from "../components/MiniCart";
@@ -12,7 +12,7 @@ export default function Products() {
 
     useEffect(() => {
         axios
-        .get("http://localhost:3000/products")
+        .get("/products")
         .then((res) => setProducts(res.data))
         .catch((err) => console.error(err));
     }, []);

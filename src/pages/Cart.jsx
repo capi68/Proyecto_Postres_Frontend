@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
 import  { useCart } from "../context/CartContext";
 import NavBar from "../components/NavBar";
 import CheckoutOrder from "../components/checkoutOrder";
+import api from "../api/axiosConfig";
 
 
 export default function Cart() {
@@ -59,7 +59,7 @@ export default function Cart() {
       console.log("token actual:",token);
 
       // send order to back
-      const response = await axios.post("http://localhost:3000/orders/checkout", {
+      const response = await api.post("/orders/checkout", {
         address,
         phone,
         deliveryMethod,
