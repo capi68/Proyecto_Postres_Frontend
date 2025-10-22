@@ -11,7 +11,7 @@ export default function Products() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        axios
+        api
         .get("/products")
         .then((res) => setProducts(res.data))
         .catch((err) => console.error(err));

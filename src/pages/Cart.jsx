@@ -69,11 +69,7 @@ export default function Cart() {
           quantity: it.qty,
           price: it.price,
         })),
-      },
-      {
-        headers: { Authorization: `Bearer ${token}`},
-      }
-    );
+      });
 
     console.log("orden confirmada:", {
       cart,

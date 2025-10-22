@@ -27,7 +27,7 @@ export default function Landing() {
             const email = loginEmail.toLowerCase().trim();
             const password = loginPassword; 
 
-            const res = await api.post("/users/login", {
+            const res = await publicApi.post("/users/login", {
                 email,
                 password,
             });
