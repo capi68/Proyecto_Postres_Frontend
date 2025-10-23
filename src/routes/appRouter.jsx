@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ProtectedRoute from '../components/ProtectedRoute'
 import Landing from '../pages/Landing'
 import Products from '../pages/Products'
 import Cart from '../pages/Cart'
@@ -10,12 +11,50 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* public route */}
         <Route path="/" element={<Landing />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order" element={<Order />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/nosotros' element={<Nosotros />} />
+
+        {/* proteted routes */}
+        <Route 
+          path="/products" 
+          element={
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/cart" 
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/home" 
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/nosotros" 
+          element={
+            <ProtectedRoute>
+              <Nosotros />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/order" 
+          element={
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
     </BrowserRouter>
   )

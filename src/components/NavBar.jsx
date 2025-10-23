@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ShoppingCart, Search, CirclePower } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ShoppingCart, Search, CirclePower } from "lucide-react";
 import Logo from "../assets/Logo-Wikipostres.svg?react";
 
 export default function NavBar({ onSearch }) {
     const  [search, setSearch] = useState("");
-
     const { getTotalItems, clearCart } = useCart();
+    const navigate = useNavigate();
 
     //function search for products
     const handleChange = (e) => {
@@ -18,12 +19,15 @@ export default function NavBar({ onSearch }) {
 
     //Log Out
     const handleLogout = () => {
+        try{
         localStorage.removeItem("token");  //remove token
-
+        localStorage.removeItem("user");
         clearCart(); //Clean Cart
-
-
-    }
+        navigate("/");
+        } catch(err) {
+            console.error("Error cerrando sesión", err);
+        }
+    };
 
     return (
         <nav>
@@ -89,11 +93,12 @@ export default function NavBar({ onSearch }) {
                             {getTotalItems()}
                         </span>
                     </Link>
+
                     {/* Log out*/}
-                    <Link to="/" className="relative flex w-20" onClick={handleLogout}>
+                    <button className="relative flex w-20" onClick={handleLogout}>
                     <CirclePower className="w-6 md:w-10 md:h-8 h-6 mx-auto" aria-label="Cerrar-sesión"/>
                     <span className="hidden md:block text-xs text-center">Cerrar Sesión</span>
-                    </Link>
+                    </button>
                 </div>
             </div>
         </nav>

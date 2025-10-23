@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosConfig";
+import publicApi from "../api/axiosConfig"
 import Logo from "../assets/Logo-Wikipostres.svg?react";
 
 
@@ -32,8 +33,19 @@ export default function Landing() {
                 password,
             });
 
+            console.log("🔹 Login response:", res.data);
+
+            if (!res.data?.token) {
+            console.warn("❌ No token recibido");
+            alert("No se recibió token del servidor");
+            return;
+    }
+
             localStorage.setItem("token", res.data.token); //save token
             localStorage.setItem("user", JSON.stringify(res.data.user));
+            console.log("Respuesta login:", res.data);
+            console.log("Token:", res.data.token);
+
             navigate("/products"); //redirect to products
 
 
