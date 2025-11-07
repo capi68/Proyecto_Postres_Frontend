@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectedRoute from '../components/ProtectedRoute'
-import Landing from '../pages/Landing'
+import Landing from '../pages/landing'
 import Products from '../pages/Products'
 import Cart from '../pages/Cart'
 import Order from '../pages/Order'
