@@ -1,37 +1,44 @@
+
 import axios from "axios";
 
-//Detect if development or production
-const baseURL = 
- import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-const publicApi = axios.create({ baseURL });
+const API_BASE =
+  import.meta.env.VITE_API_BASE ||
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:3000";
 
- const api = axios.create({ 
-    baseURL,
-    withCredentials: true, 
- });
+  console.log("API_BASE (Vite) =", API_BASE);
 
- //Request interceptor: attaches the token automatically
+
+if (!import.meta.env.VITE_API_BASE && !import.meta.env.VITE_API_URL) {
+  console.warn("⚠️ No hay VITE_API_BASE/VITE_API_URL en tus .env; usando localhost:3000");
+}
+
+const api = axios.create({
+  baseURL: API_BASE,
+  headers: { "Content-Type": "application/json" },
+  withCredentials: false, 
+});
+
+// Token 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-// Response interceptor: detects token expiration or error
+// 401 clean sesion
 api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      console.warn("Token expirado o inválido, cerrando sesión...");
+  (res) => res,
+  (err) => {
+    if (err?.response?.status === 401) {
+      console.warn("Token inválido/expirado → logout");
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      window.location.href = "/"; // 🔁 redirect to login
+      window.location.href = "/"; // redirect to /login
     }
-    return Promise.reject(error);
+    return Promise.reject(err);
   }
 );
 
- export default api;
+export default api;
