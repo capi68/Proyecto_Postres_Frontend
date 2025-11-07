@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import  { useCart } from "../context/CartContext";
 import NavBar from "../components/NavBar";
-import CheckoutOrder from "../components/checkoutOrder";
+import CheckoutOrder from "../components/CheckoutOrder";
 import api from "../api/axiosConfig";
 
 
